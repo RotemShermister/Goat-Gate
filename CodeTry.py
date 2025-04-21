@@ -1,33 +1,26 @@
-import RPi.GPIO as GPIO  # use GPIO from now on
-import time              # sleep
-import email             # for email function calls
+from gpiozero import Button
+import time
+import my_email as email
 
-# startup email
+# Set up the GPIO pin (GPIO pin 4)
+sensor = Button(4, pull_up=False)
+
+# Initialize email
 email.initialize()
 
-# GPIO pin that is connected to sensor
-SWITCH_PIN = 14
-GPIO.setmode(GPIO.BCM) # set for gpio numbering
+previous_state = False
 
-# Configure GPIO pin
-GPIO.setup(SWITCH_PIN, GPIO.IN, connect_tgt = GPIO.PUD.UP) #pin,input,default 
-
-# initialize previous switch state to determine if there is a change
-previous_switch_state = GPIO.input(SWITCH_PIN)
-
-try: # get out of this loop by Ctrl-C Interrupt 
+try:
     while True:
-        time.sleep(0.1)
-        # get new switch state
-        switch_state = GPIO.input(SWITCH_PIN)
-        # compare states
-        if switch_state != previous_switch_state:
-            # set previous switch state to current state
-            previous_switch_state = switch_state
-            # check if the gate is open
-            if switch_state == GPIO.HIGH:
-                print("Gate has just been opened")
+        if sensor.is_pressed:
+            if previous_state == False:
+                print("Sending email...")
                 email.send_open()
-
+            time.sleep(0.75)  # Prevent multiple triggers in rapid succession
+            previous_state = True
+        else:
+            print("Button not pressed.")
+            previous_state = False
+        time.sleep(0.1)
 except KeyboardInterrupt:
-    GPIO.cleanup()
+    print("Exiting program.")

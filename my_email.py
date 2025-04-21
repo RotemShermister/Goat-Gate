@@ -50,5 +50,5 @@ def send_open():
 
 
 # main : (delete when integrated with switch)
-initialize()
-send_open()
+#initialize()
+#send_open()
