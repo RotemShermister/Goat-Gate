@@ -1,3 +1,24 @@
+# Final Update:
+Video link: https://youtu.be/k8-N9fdgAm4 
+
+# Biggest challenge:
+Prior to this project, I had no previous experience using Raspberry Pis or anything like it. From the start, it was a challenge to understand how I should set up the Raspberry Pi. I had to pick an operating system, write it to a micro-SD card, and configure Linux to interface with the GPIO pins. Then, I had to find the correct Python packages that access the GPIO pins for my specific model of Raspberry Pi (Pi 5). 
+Most of the examples and documentation on the internet were using physical buttons rather than magnetic switches, so I had to research how the signal is read from the magnetic switch. I learned about the importance of pull up and pull-down resistors and how they are necessary for ensuring that the input pin is connected to a logical low state when the switch isn’t activated. 
+Additionally, figuring out how to send embedded image attachments in emails from a Raspberry Pi was challenging because I needed to grasp a basic understanding of HTML (which I had no experience using).
+# What I have learned:
+Configuring a Raspberry Pi with Linux
+Interfacing and testing with GPIO pins 
+Writing code for physical systems
+Inline HTML in Python
+# What I Enjoyed:
+A new and unfamiliar challenge
+Using code to measure physical activity and translate it into the digital world
+Spending time with the goats!
+# Side note:
+I am interested in creating a more permanent solution so the goat gate detection system can be left outside without worrying about the rain or running power cords. This would most likely involve switching from a Raspberry Pi to a cheaper development board like a Raspberry Pi Pico that would be battery powered. It would also require a waterproof enclosure so that the circuit board isn’t damaged from the rain.
+
+
+
 # Proposal
 
 ## What will (likely) be the title of your project?
